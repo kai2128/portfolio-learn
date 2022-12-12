@@ -38,7 +38,7 @@ export class Resources extends EventEmitter {
         this.video[asset.name].play()
 
         this.videoTexure[asset.name] = new THREE.VideoTexture(this.video[asset.name])
-        this.videoTexure[asset.name].flipY = true
+        this.videoTexure[asset.name].flipY = false
         this.videoTexure[asset.name].minFilter = THREE.NearestFilter
         this.videoTexure[asset.name].mageFilter = THREE.NearestFilter
         this.videoTexure[asset.name].generateMipmaps = false

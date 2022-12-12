@@ -33,10 +33,12 @@ export class Experience {
   }
   resize() {
     this.camera?.resize()
+    this.world?.resize()
     this.renderer?.resize()
   }
   update() {
     this.renderer?.update()
+    this.world?.update()
     this.camera?.update()
   }
 }

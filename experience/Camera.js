@@ -29,7 +29,9 @@ export class Camera {
   createPerspectiveCamera() {
     this.perspectiveCamera = new THREE.PerspectiveCamera(35, this.sizes?.aspect, 0.1, 1000)
     this.scene?.add(this.perspectiveCamera)
-    this.perspectiveCamera.position.z = 5
+    this.perspectiveCamera.position.z = 12
+    this.perspectiveCamera.position.y = 29
+    this.perspectiveCamera.position.z = 14
   }
 
   createOrthographicCamera() {
