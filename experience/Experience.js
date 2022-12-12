@@ -3,6 +3,7 @@ import { Camera } from './Camera'
 import { Renderer } from './Renderer'
 import { Sizes } from './utils/Sizes'
 import { Time } from './utils/Time'
+import { World } from './world/world'
 
 export class Experience {
   static instance
@@ -18,6 +19,7 @@ export class Experience {
     this.camera = new Camera()
     this.renderer = new Renderer()
     this.time = new Time()
+    this.world = new World()
 
     this.time.on("update", () => {
       this.update()
