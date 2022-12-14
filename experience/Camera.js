@@ -1,6 +1,6 @@
 import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { Experience } from './Experience'
-import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js'
 
 export class Camera {
   constructor() {
@@ -42,7 +42,7 @@ export class Camera {
       this.sizes.frustrum / 2,
       -this.sizes.frustrum / 2,
       -10,
-      10
+      10,
     )
     this.scene?.add(this.orthographicCamera)
 
