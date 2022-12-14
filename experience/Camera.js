@@ -17,7 +17,7 @@ export class Camera {
   setOrbitControls() {
     this.controls = new OrbitControls(this.perspectiveCamera, this.canvas)
     this.controls.enableDamping = true
-    this.controls.enableZoom = true
+    this.controls.enableZoom = false
 
     this.controls.enablePan = true
     // this.controls.minDistance = 1
@@ -41,12 +41,16 @@ export class Camera {
       (this.sizes.aspect * this.sizes.frustrum) / 2,
       this.sizes.frustrum / 2,
       -this.sizes.frustrum / 2,
-      -100,
-      100
+      -10,
+      10
     )
     this.scene?.add(this.orthographicCamera)
-    const size = 10
-    const divisions = 10
+
+    this.helper = new THREE.CameraHelper(this.orthographicCamera)
+    this.scene.add(this.helper)
+
+    const size = 20
+    const divisions = 20
 
     const gridHelper = new THREE.GridHelper(size, divisions)
     this.scene?.add(gridHelper)
@@ -68,5 +72,9 @@ export class Camera {
 
   update() {
     this.controls?.update()
+    this.helper.matrixWorldNeedsUpdate = true
+    this.helper.update()
+    this.helper.position.copy(this.orthographicCamera.position)
+    this.helper.position.copy(this.orthographicCamera?.rotation)
   }
 }
