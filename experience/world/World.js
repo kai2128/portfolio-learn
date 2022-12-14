@@ -3,6 +3,7 @@ import { Experience } from '../Experience'
 import { Room } from './Room'
 import { Environment } from './Environment'
 import { Control } from './Control'
+import { Floor } from './Floor'
 
 export class World {
   constructor() {
@@ -16,6 +17,7 @@ export class World {
     this.resources.on('ready', () => {
       this.room = new Room()
       this.environment = new Environment()
+      this.floor = new Floor()
       this.control = new Control()
     })
   }

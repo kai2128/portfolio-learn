@@ -1,3 +1,4 @@
+import gsap from 'gsap'
 import * as THREE from 'three'
 import { Experience } from '../Experience'
 
@@ -9,8 +10,23 @@ export class Room {
     this.room = this.resources.items.room
     this.time = this.experience.time
     this.actualRoom = this.room.scene
+
+    this.lerp = {
+      current: 0,
+      target: 0,
+      ease: 0.1,
+    }
+
     this.setModel()
     this.setAnimation()
+    this.onMouseMove()
+  }
+
+  onMouseMove() {
+    window.addEventListener('mousemove', (event) => {
+      this.rotation = ((event.clientX - window.innerWidth / 2) * 2) / window.innerWidth
+      this.lerp.target = this.rotation * 0.1
+    })
   }
 
   setAnimation() {
@@ -40,7 +56,7 @@ export class Room {
         child.material.opacity = 1
       }
 
-      if(child.name === "Screen"){
+      if (child.name === 'Screen') {
         child.flipY = true
         child.material = new THREE.MeshBasicMaterial({
           map: this.resources?.items.screen,
@@ -55,6 +71,8 @@ export class Room {
   }
 
   update() {
+    this.actualRoom.rotation.y = this.lerp.current
+    this.lerp.current = gsap.utils.interpolate(this.lerp.current, this.lerp.target, this.lerp.ease)
     this.mixer?.update(this.time.delta * 0.001)
   }
 }
