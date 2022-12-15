@@ -10,10 +10,37 @@ html, body {
   color: var(--text-black);
 }
 
+h1,section,p,span,svg{
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
 :root{
-  --text-black: #202020;
-  --primary-color: #FAFAE5;
-  --primary-pink: #E5A1AA;
+  /* Light theme variables */
+  --color-text-light: #333332;
+  --color-background-light: #FAFAE5;
+  --color-pink-light: #E5A1AA;
+  --color-green-light: #7AD0AC;
+  --color-blue-light: #8395CD;
+
+  /* Dark Theme Variables */
+  --color-text-dark: #FAFAE5;
+  --color-background-dark: #8395CD;
+}
+
+.light-theme{
+  --color-text: var(--color-text-light);
+  --color-background: var(--color-background-light);
+  --color-pink: var(--color-pink-light);
+  --color-green: var(--color-green-light);
+  --color-blue: var(--color-blue-light);
+}
+
+.dark-theme{
+  --color-text: var(--color-text-dark);
+  --color-background: var(--color-background-dark);
+  --color-pink:  var(--color-text-dark);;
+  --color-green:  var(--color-text-dark);;
+  --color-blue:  var(--color-text-dark);;
 }
 
 /* Experience -------------------------------- */
@@ -58,6 +85,7 @@ html, body {
   flex-direction: row;
   justify-items: center;
   align-items: center;
+  color: var(--color-text);
 }
 
 .toggle-button{
@@ -68,7 +96,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--primary-pink);
+  background-color: var(--color-pink);
   border-radius: 999px;
   margin: 0px 16px;
   border: none;
@@ -81,7 +109,7 @@ html, body {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: var(--primary-color);
+  background-color: var(--color-background);
   transition: all 0.2s ease-in-out;
 }
 
@@ -103,7 +131,7 @@ html, body {
   width: 50%;
   padding: 1000px 4%;
   margin: 0;
-  background-color: var(--primary-color);
+  background-color: var(--color-background);
 }
 
 .left{
@@ -117,7 +145,7 @@ html, body {
 .section-intro-wrapper{
   position: relative;
   padding: 20% 5%;
-  border-bottom: 2px solid var(--primary-pink);
+  border-bottom: 2px solid var(--color-pink);
   padding-bottom: 400px;
 }
 
@@ -131,17 +159,19 @@ html, body {
   font-weight: bold;
   line-height: 1.8;
   margin-top: 64px;
+  color: var(--color-text);
 }
 
 .section-text{
   line-height: 2;
+  color: var(--color-text);
   margin-top: 18px;
   font-size: 16px;
 }
 /* Fancy Decoration Part of Section ---------- */
 .section-title{
   position: relative;
-  color: var(--primary-pink);
+  color: var(--color-pink);
 }
 
 .section-title-text{
@@ -152,6 +182,7 @@ html, body {
   transform: skewY(25deg);
   z-index: 5;
   text-transform: uppercase;
+  color: var(--color-pink);
 }
 
 .styleOne,
@@ -162,7 +193,7 @@ html, body {
   width: 100%;
   max-width: 278px;
   height: 60px;
-  border: 1px solid var(--primary-pink);
+  border: 1px solid var(--color-pink);
   transform: skewY(-25deg);
   transform-origin: left;
 }
@@ -176,14 +207,14 @@ html, body {
 .styleThree{
   top: 80px;
   transform: skewY(25deg);
-  background: var(--primary-pink);
+  background: var(--color-pink);
 }
 
 .section-number{
   position: absolute;
   bottom: 15px;
   right: 0;
-  color: var(--primary-pink);
+  color: var(--color-pink);
   font-size: 25px;
 }
 
@@ -211,17 +242,53 @@ html, body {
   position: absolute;
   top: calc(50% - 120px);
   right: 0;
+  color: var(--color-text);
 }
 
 .hero-main-title{
   font-size: 64px;
+  color: var(--color-text);
 }
 
 .hero-main-description{
   font-size: 18px;
+  color: var(--color-text);
 }
 
 .hero-second-subheading{
   font-size: 32px;
   text-transform: uppercase;
+  color: var(--color-text);
+}
+
+/* Other colors override */
+.blue-text{
+  color: var(--color-blue);
+}
+
+.blue-border{
+  border-color: var(--color-blue);
+}
+
+.blue-background{
+  background-color: var(--color-blue);
+}
+
+.green-text{
+  color: var(--color-green);
+}
+
+.green-border{
+  border-color: var(--color-green);
+}
+
+.green-background{
+  background-color: var(--color-green);
+}
+
+/* Media quaries */
+@media (max-width: 968px){
+  .section{
+    width: 100%;
+  }
 }

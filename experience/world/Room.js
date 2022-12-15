@@ -33,7 +33,7 @@ export class Room {
 
   setAnimation() {
     this.mixer = new THREE.AnimationMixer(this.actualRoom)
-    this.swim = this.mixer.clipAction(this.room.animations[111])
+    this.swim = this.mixer.clipAction(this.room.animations[6])
     this.swim.play()
   }
 
@@ -60,18 +60,17 @@ export class Room {
         })
       }
 
-      if (child.name === 'Fish_Glass') {
-        child.material = new THREE.MeshPhysicalMaterial()
-        child.material.color.set(0x549AA2)
-        child.material.roughness = 0
-        child.material.ior = 3
-        child.material.transmission = 1
-        child.material.opacity = 1
+      if (child.name === 'Aquarium') {
+        child.children[1].material = new THREE.MeshPhysicalMaterial()
+        child.children[1].material.color.set(0x549AA2)
+        child.children[1].material.roughness = 0
+        child.children[1].material.ior = 3
+        child.children[1].material.transmission = 1
+        child.children[1].material.opacity = 1
       }
 
-      if (child.name === 'Screen') {
-        child.flipY = true
-        child.material = new THREE.MeshBasicMaterial({
+      if (child.name === 'Computer') {
+        child.children[1].material = new THREE.MeshBasicMaterial({
           map: this.resources?.items.screen,
         })
       }
