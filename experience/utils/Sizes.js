@@ -3,7 +3,7 @@ import { EventEmitter } from 'events'
 export class Sizes extends EventEmitter {
   constructor() {
     super()
-    this.frustrum = 5
+    this.frustrum = 7
     this.width = window.innerWidth
     this.height = window.innerHeight
     this.aspect = this.width / this.height

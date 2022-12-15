@@ -35,7 +35,6 @@ export class Camera {
   }
 
   createOrthographicCamera() {
-    this.frustrum = 5
     this.orthographicCamera = new THREE.OrthographicCamera(
       (-this.sizes.aspect * this.sizes.frustrum) / 2,
       (this.sizes.aspect * this.sizes.frustrum) / 2,
@@ -46,7 +45,7 @@ export class Camera {
     )
 
     this.orthographicCamera.position.y = 3.5
-    this.orthographicCamera.position.z = 5
+    this.orthographicCamera.position.z = 4
     this.orthographicCamera.rotation.x = -Math.PI / 6
 
     this.scene?.add(this.orthographicCamera)

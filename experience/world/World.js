@@ -12,6 +12,7 @@ export class World {
     this.canvas = this.experience.canvas
     this.scene = this.experience.scene
     this.camera = this.experience.camera
+    this.theme = this.experience.theme
 
     this.resources = this.experience.resources
     this.resources.on('ready', () => {
@@ -20,6 +21,15 @@ export class World {
       this.floor = new Floor()
       this.control = new Control()
     })
+
+    this.theme.on('switch', (theme) => {
+      this.switchTheme(theme)
+    })
+  }
+
+  switchTheme(theme) {
+    if (this.environment)
+      this.environment.switchTheme(theme)
   }
 
   resize() {

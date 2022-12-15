@@ -11,14 +11,15 @@ export class Control {
     this.time = this.experience.time
     this.camera = this.experience.camera
     this.room = this.experience.world.room.actualRoom
+    this.sizes = this.experience.sizes
 
     GSAP.registerPlugin(ScrollTrigger)
     this.setPath()
   }
 
   setPath() {
-    this.timeline = new GSAP.timeline()
-    this.timeline.to(this.room.position, { x: 5, duration: 20 })
+    this.timeline = GSAP.timeline()
+    this.timeline.to(this.room.position, { x: () => this.sizes.width * 0.0017, scrollTrigger: { trigger: '.first-move', markers: true, start: 'top top', end: 'bottom bottom', scrub: 0.6, invalidateOnRefresh: true } })
   }
 
   resize() {

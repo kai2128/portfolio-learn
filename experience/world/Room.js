@@ -1,5 +1,6 @@
 import gsap from 'gsap'
 import * as THREE from 'three'
+import { RectAreaLightHelper } from 'three/examples/jsm/helpers/RectAreaLightHelper'
 import { Experience } from '../Experience'
 
 export class Room {
@@ -19,6 +20,7 @@ export class Room {
 
     this.setModel()
     this.setAnimation()
+    this.setLight()
     this.onMouseMove()
   }
 
@@ -33,6 +35,17 @@ export class Room {
     this.mixer = new THREE.AnimationMixer(this.actualRoom)
     this.swim = this.mixer.clipAction(this.room.animations[111])
     this.swim.play()
+  }
+
+  setLight() {
+    const rectLight = new THREE.RectAreaLight(0xFFFFFF, 0, 0.7, 1.6)
+    rectLight.position.set(9.2, 12.3, -2.0)
+    rectLight.rotation.x = -Math.PI / 2
+    rectLight.rotation.z = Math.PI / 4
+    this.actualRoom.add(rectLight)
+    this.fishTankLight = rectLight
+
+    // rectLight.add(new RectAreaLightHelper(rectLight))
   }
 
   setModel() {

@@ -1,12 +1,45 @@
 import * as THREE from 'three'
+import GSAP from 'gsap'
 import { Experience } from '../Experience'
 
 export class Environment {
   constructor() {
     this.experience = new Experience()
     this.scene = this.experience.scene
+    this.fishTankLight = this.experience.world?.room.fishTankLight
 
     this.setSunlight()
+  }
+
+  switchTheme(theme) {
+    if (theme === 'dark') {
+      this.sunlightTween = GSAP.to(this.sunlight?.color, {
+        r: 0.15,
+        g: 0.2,
+        b: 0.6,
+      })
+      this.ambientLightTween = GSAP.to(this.ambientLight?.color, {
+        r: 0.15,
+        g: 0.2,
+        b: 0.5,
+      })
+      this.sunlightIntensityTween = GSAP.to(this.sunlight, {
+        intensity: 0.78,
+      })
+      this.ambientLightIntensityTween = GSAP.to(this.ambientLight, {
+        intensity: 0.78,
+      })
+      this.fishTankLightIntensityTween = GSAP.to(this.fishTankLight, {
+        intensity: 1,
+      }).delay(0.5)
+    }
+    else {
+      this.sunlightTween?.reverse()
+      this.ambientLightTween?.reverse()
+      this.sunlightIntensityTween?.reverse()
+      this.ambientLightIntensityTween.reverse()
+      this.fishTankLightIntensityTween?.reverse()
+    }
   }
 
   setSunlight() {
@@ -17,7 +50,7 @@ export class Environment {
     this.sunlight.shadow.normalBias = 0.05
     // const helper = new THREE.CameraHelper(this.sunlight.shadow.camera)
     // this.scene.add(helper)
-    
+
     this.sunlight.position.set(-1.5, 7, 3)
     this.scene.add(this.sunlight)
 

@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { Camera } from './Camera'
 import { Renderer } from './Renderer'
+import { Theme } from './Theme'
 import assets from './utils/assets'
 import { Resources } from './utils/Resources'
 import { Sizes } from './utils/Sizes'
@@ -22,6 +23,7 @@ export class Experience {
     this.renderer = new Renderer()
     this.time = new Time()
     this.resources = new Resources(assets)
+    this.theme = new Theme()
     this.world = new World()
 
     this.time.on("update", () => {
