@@ -38,7 +38,7 @@ export class Room {
   }
 
   setLight() {
-    const rectLight = new THREE.RectAreaLight(0xFFFFFF, 0, 0.7, 1.6)
+    const rectLight = new THREE.RectAreaLight(0xFFFFFF, 0, 0.3, 1.4)
     rectLight.position.set(9.2, 12.3, -2.0)
     rectLight.rotation.x = -Math.PI / 2
     rectLight.rotation.z = Math.PI / 4
@@ -74,9 +74,17 @@ export class Room {
           map: this.resources?.items.screen,
         })
       }
+
+      if (child.name === 'Mini_Floor') {
+        child.position.x = -0.669599
+        child.position.z = 9.76722
+      }
+
+      if (child.name === 'Mailbox' || child.name === 'Lamp' || child.name === 'FloorFirst' || child.name === 'FloorSecond' || child.name === 'FloorThird' || child.name === 'Dirt' || child.name === 'Flower')
+        child.scale.set(0, 0, 0)
     })
     this.scene.add(this.actualRoom)
-    this.actualRoom.scale.set(0.11, 0.11, 0.11)
+    this.actualRoom.scale.set(0.09, 0.09, 0.09)
   }
 
   resize() {

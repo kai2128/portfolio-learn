@@ -30,7 +30,7 @@ export class Environment {
         intensity: 0.78,
       })
       this.fishTankLightIntensityTween = GSAP.to(this.fishTankLight, {
-        intensity: 1,
+        intensity: 3,
       }).delay(0.5)
     }
     else {
