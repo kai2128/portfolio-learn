@@ -11,6 +11,7 @@ export class Room {
     this.room = this.resources.items.room
     this.time = this.experience.time
     this.actualRoom = this.room.scene
+    this.roomChildren = {}
 
     this.lerp = {
       current: 0,
@@ -44,6 +45,7 @@ export class Room {
     rectLight.rotation.z = Math.PI / 4
     this.actualRoom.add(rectLight)
     this.fishTankLight = rectLight
+    this.roomChildren.rectLight = rectLight
 
     // rectLight.add(new RectAreaLightHelper(rectLight))
   }
@@ -80,8 +82,17 @@ export class Room {
         child.position.z = 9.76722
       }
 
-      if (child.name === 'Mailbox' || child.name === 'Lamp' || child.name === 'FloorFirst' || child.name === 'FloorSecond' || child.name === 'FloorThird' || child.name === 'Dirt' || child.name === 'Flower')
-        child.scale.set(0, 0, 0)
+      // if (child.name === 'Mailbox' || child.name === 'Lamp' || child.name === 'FloorFirst' || child.name === 'FloorSecond' || child.name === 'FloorThird' || child.name === 'Dirt' || child.name === 'Flower')
+      //   child.scale.set(0, 0, 0)
+      child.scale.set(0, 0, 0)
+
+      // setup initial preloader cube
+      if (child.name === 'Cube143') {
+        // child.scale.set(1, 1, 1)
+        child.position.set(0, -0.05, 0)
+        child.rotation.y = Math.PI / 4
+      }
+      this.roomChildren[child.name.toLowerCase()] = child
     })
     this.scene.add(this.actualRoom)
     this.actualRoom.scale.set(0.09, 0.09, 0.09)

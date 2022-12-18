@@ -20,7 +20,13 @@ export class Control {
         this.reactLight = child
     })
 
+    this.circleFirst = this.experience.world.floor.circleFirst
+    this.circleSecond = this.experience.world.floor.circleSecond
+    this.circleThird = this.experience.world.floor.circleThird
     GSAP.registerPlugin(ScrollTrigger)
+
+    document.querySelector('.page').style.overflow = 'visible'
+
     this.mm = GSAP.matchMedia()
     this.setSmoothScroll()
     this.setScrollTrigger()
@@ -170,9 +176,9 @@ export class Control {
           invalidateOnRefresh: true,
         },
       }).to(this.room.scale, {
-        x: 0.15,
-        y: 0.15,
-        z: 0.15,
+        x: 0.17,
+        y: 0.17,
+        z: 0.17,
       }, 'scale and move').to(this.fishTankLight, {
         width: 0.2 * 3.15,
         height: 1.0 * 3.15,
@@ -249,6 +255,53 @@ export class Control {
             pinSpacing: false,
           },
         })
+      })
+
+      // all animation
+      // first section
+      this.firstMoveTimeline = GSAP.timeline({
+        scrollTrigger: {
+          trigger: '.first-move',
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 0.6,
+          invalidateOnRefresh: true,
+        },
+      }).to(this.circleFirst?.scale, {
+        x: 3,
+        y: 3,
+        z: 3,
+      })
+
+      // second section
+      this.secondMoveTimeline = GSAP.timeline({
+        scrollTrigger: {
+          trigger: '.second-move',
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 0.6,
+          invalidateOnRefresh: true,
+        },
+      }).to(this.circleSecond?.scale, {
+        x: 3,
+        y: 3,
+        z: 3,
+      }, 'scale and move').to(this.room.position, {
+        y: 0.5,
+      }, 'scale and move')
+      // third section
+      this.thirdMoveTimeline = GSAP.timeline({
+        scrollTrigger: {
+          trigger: '.third-move',
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 0.6,
+          invalidateOnRefresh: true,
+        },
+      }).to(this.circleThird?.scale, {
+        x: 3,
+        y: 3,
+        z: 3,
       })
 
       // mini platform animation

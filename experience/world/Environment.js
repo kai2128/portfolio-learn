@@ -29,17 +29,23 @@ export class Environment {
       this.ambientLightIntensityTween = GSAP.to(this.ambientLight, {
         intensity: 0.78,
       })
-      this.fishTankLightIntensityTween = GSAP.to(this.fishTankLight, {
-        intensity: 3,
-      }).delay(0.5)
+
+      if (this.experience.preloader?.loadedIntro)
+        this.openfishTankLight()
     }
     else {
       this.sunlightTween?.reverse()
       this.ambientLightTween?.reverse()
       this.sunlightIntensityTween?.reverse()
-      this.ambientLightIntensityTween.reverse()
+      this.ambientLightIntensityTween?.reverse()
       this.fishTankLightIntensityTween?.reverse()
     }
+  }
+
+  openfishTankLight() {
+    this.fishTankLightIntensityTween = GSAP.to(this.fishTankLight, {
+      intensity: 3,
+    }).delay(0.5)
   }
 
   setSunlight() {

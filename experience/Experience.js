@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { Camera } from './Camera'
+import { Preloader } from './Preloader'
 import { Renderer } from './Renderer'
 import { Theme } from './Theme'
 import assets from './utils/assets'
@@ -7,6 +8,7 @@ import { Resources } from './utils/Resources'
 import { Sizes } from './utils/Sizes'
 import { Time } from './utils/Time'
 import { World } from './world/world'
+import { Control } from './world/Control'
 
 export class Experience {
   static instance
@@ -25,6 +27,11 @@ export class Experience {
     this.resources = new Resources(assets)
     this.theme = new Theme()
     this.world = new World()
+    this.preloader = new Preloader()
+
+    this.preloader.on('enablecontrols', () => {
+      this.control = new Control()
+    })
 
     this.time.on("update", () => {
       this.update()
@@ -39,7 +46,8 @@ export class Experience {
     this.renderer?.resize()
   }
   update() {
-    this.renderer?.update()
+    this.preloader?.update()
+    this.renderer?.update() 
     this.world?.update()
     this.camera?.update()
   }
