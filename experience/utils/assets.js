@@ -1,12 +1,14 @@
+const baseUrl = import.meta.env.BASE_URL
+
 export default [
   {
     name: 'room',
     type: 'glbModel',
-    path: '/models/room finale.glb',
+    path: `${baseUrl}/models/room finale.glb`,
   },
   {
     name: 'screen',
     type: 'videoTexture',
-    path: '/textures/Vaporwave Loop.mp4',
-  }
+    path: `${baseUrl}/textures/Vaporwave Loop.mp4`,
+  },
 ]
