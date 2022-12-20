@@ -101,7 +101,7 @@ export class Preloader extends EventEmitter {
           ease: 'back.out(2.5)',
           duration: 0.7,
         }).to(this.room.position, {
-          x: -1,
+          x: -1.2,
           ease: 'power1.out',
           duration: 0.7,
         })
@@ -214,7 +214,8 @@ export class Preloader extends EventEmitter {
         .to(this.roomChildren.floor_items.scale, { x: 1, y: 1, z: 1, ease: 'back.out(2.2)', duration: 0.5 }, '>-0.3')
         .to(this.roomChildren.desk.scale, { x: 1, y: 1, z: 1, ease: 'back.out(2.2)', duration: 0.5 })
         .to(this.roomChildren.table_stuff.scale, { x: 1, y: 1, z: 1, ease: 'back.out(2.2)', duration: 0.5 }, '>-0.2')
-        .to(this.roomChildren.computer.scale, { x: 1, y: 1, z: 1, ease: 'back.out(2.2)', duration: 0.5 }, '>-0.1')
+        .to(this.roomChildren.computer.scale, { x: 1, y: 1, z: 1, ease: 'back.out(2.2)', duration: 0.5 }, '>-0.2')
+        .to(this.roomChildren.fish.scale, { x: 1, y: 1, z: 1, ease: 'back.out(2.2)', duration: 0.5 }, '>-0.1')
         .to(this.roomChildren.chair.scale, { x: 1, y: 1, z: 1, ease: 'back.out(2.2)', duration: 0.5 }, 'chair')
         .to(this.roomChildren.chair.rotation, { y: 4 * Math.PI, ease: 'power2.out', duration: 1, onComplete: resolve }, 'chair')
         .to('.arrow-svg-wrapper', {
