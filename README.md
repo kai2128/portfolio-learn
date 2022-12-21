@@ -18,6 +18,6 @@ Original idea belongs to: https://bokoko33.me/
 
 ### Development
 ```
-pnpm run install
+pnpm install
 pnpm run dev
 ```
